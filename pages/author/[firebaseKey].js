@@ -9,8 +9,12 @@ export default function ViewAuthor() {
 
   const { firebaseKey } = router.query;
 
+  const allAuthorDetails = (key) => {
+    viewAuthorDetails(key).then(setAuthorDetails);
+  };
+
   useEffect(() => {
-    viewAuthorDetails(firebaseKey).then(setAuthorDetails);
+    allAuthorDetails(firebaseKey);
   }, [firebaseKey]);
 
   return (
@@ -29,7 +33,7 @@ export default function ViewAuthor() {
       </div>
       <div className="d-flex flex-wrap">
         {authorDetails.books?.map((book) => (
-          <BookCard key={book.firebaseKey} bookObj={book} onUpdate={console.warn('easter egg')} />
+          <BookCard key={book.firebaseKey} bookObj={book} onUpdate={allAuthorDetails} />
         ))}
       </div>
     </div>
