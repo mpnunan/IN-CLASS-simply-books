@@ -1,3 +1,6 @@
-export default function CreateAuthor() {
-  console.warn('create author');
+import React from 'react';
+import AuthorForm from '../../components/forms/AuthorForm';
+
+export default function AddAuthor() {
+  return <AuthorForm />;
 }

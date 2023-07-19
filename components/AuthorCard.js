@@ -5,7 +5,7 @@ import { deleteSingleAuthor } from '../api/authorData';
 
 function AuthorCard({ authorObj, onUpdate }) {
   const deleteThisAuthor = () => {
-    if (window.confirm(`Delete ${authorObj.title}?`)) {
+    if (window.confirm(`Delete ${authorObj.last_name}?`)) {
       deleteSingleAuthor(authorObj.firebaseKey).then(() => onUpdate());
     }
   };
@@ -30,7 +30,7 @@ function AuthorCard({ authorObj, onUpdate }) {
 }
 
 AuthorCard.propTypes = {
-  authorObj: ({
+  authorObj: PropTypes.shape({
     first_name: PropTypes.string,
     last_name: PropTypes.string,
     firebaseKey: PropTypes.string,
